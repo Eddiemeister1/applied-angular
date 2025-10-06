@@ -35,9 +35,9 @@ code .
 
 ## Notes
 
-Eddie was here
+Jeff Was Here
 
-## Getting my code
+## Getting My Code
 
 This command will pull down my latest "push" into a directory in your repository called "instructor".
 
