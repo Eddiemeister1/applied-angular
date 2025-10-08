@@ -9,12 +9,13 @@ import {
   withState,
 } from '@ngrx/signals';
 
-const ParValues = [3, 4, 5] as const;
+const ParValues = [3, 4, 5, 6] as const;
 type GolfPar = (typeof ParValues)[number];
 type GolfState = {
   strokeCount: number;
   par: GolfPar | null;
 };
+// a service is some code that OWNS some data, and nobody can touch that data, change that date, without asking the service.
 
 export const GolfStore = signalStore(
   withProps(() => ({
@@ -36,16 +37,18 @@ export const GolfStore = signalStore(
       ),
     };
   }),
-
   withHooks({
     onInit: () => {
-      console.log('The Golf Store was Created!');
+      console.log('The Golf Store Was Created!');
+    },
+    onDestroy: () => {
+      console.log('The Golf Store was destroyed!');
     },
   }),
 );
 
 function calculateLevel(strokes: number, par: GolfPar | null) {
-  if (par === null) {
+  if (par === null || strokes === 0) {
     return '';
   }
 
@@ -60,13 +63,11 @@ function calculateLevel(strokes: number, par: GolfPar | null) {
   if (diff === -2) {
     return 'Eagle';
   }
-  if (diff === -3) {
+  if (diff == 1) {
     return 'Bogey';
   }
-
-  if (diff > 4) {
+  if (diff >= 3) {
     return 'Ouch';
   }
-
   return '';
 }

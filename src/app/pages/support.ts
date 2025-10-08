@@ -5,9 +5,10 @@ import { Component, ChangeDetectionStrategy, signal } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [],
   template: `
+    <p>Support Information Coming Soon</p>
     <div>
-      <span> {{ current() }} </span>
-      <button class="primary-button" (click)="increment()">Increment</button>
+      <span>{{ current() }}</span>
+      <button (click)="increment()" class="btn btn-primary">+</button>
     </div>
   `,
   styles: ``,

@@ -1,10 +1,10 @@
 import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 import { GolfStore } from '../stores/golf';
-
 @Component({
   selector: 'app-signals2',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [],
+  providers: [GolfStore],
   template: `
     <p>Golfing with SignalStore</p>
 
@@ -26,7 +26,7 @@ import { GolfStore } from '../stores/golf';
 
       <div>
         <button (click)="store.takeASwing()" class="btn btn-primary">
-          Take a Swing
+          Take A Swing
         </button>
       </div>
 
@@ -35,7 +35,6 @@ import { GolfStore } from '../stores/golf';
       </div>
     }
   `,
-
   styles: ``,
 })
 export class Signals2 {
