@@ -1,27 +1,24 @@
-import {
-  Component,
-  ChangeDetectionStrategy,
-  signal,
-  computed,
-} from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
+import { CounterStore } from '../stores/counterstore';
 
 @Component({
   selector: 'app-counter-ui',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [CounterStore],
   imports: [],
   template: `
     <div>
       <button
         class="btn btn-primary"
-        [disabled]="atZero()"
-        (click)="decrement()"
+        [disabled]="store.atZero()"
+        (click)="store.decrement()"
       >
         -
       </button>
-      <span>{{ counterValue() }}</span>
-      <button class="btn btn-primary" (click)="increment()">+</button>
+      <span>{{ store.currentCount() }}</span>
+      <button class="btn btn-primary" (click)="store.increment()">+</button>
     </div>
-    @if (divisibleByThree() && divisibleByFive()) {
+    @if (store.divisibleByThree() && store.divisibleByFive()) {
       <div role="alert" class="alert alert-success">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -38,7 +35,7 @@ import {
         </svg>
         <span>FizzBuzz!</span>
       </div>
-    } @else if (divisibleByThree()) {
+    } @else if (store.divisibleByThree()) {
       <div role="alert" class="alert alert-info">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -55,7 +52,7 @@ import {
         </svg>
         <span>Fizz!</span>
       </div>
-    } @else if (divisibleByFive()) {
+    } @else if (store.divisibleByFive()) {
       <div role="alert" class="alert alert-warning">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -77,25 +74,5 @@ import {
   styles: ``,
 })
 export class Ui {
-  counterValue = signal(0);
-
-  atZero = computed(() => {
-    return this.counterValue() === 0;
-  });
-
-  divisibleByThree = computed(() => {
-    return this.counterValue() % 3 === 0;
-  });
-
-  divisibleByFive = computed(() => {
-    return this.counterValue() % 5 === 0;
-  });
-
-  increment() {
-    this.counterValue.update((counterValue) => counterValue + 1);
-  }
-
-  decrement() {
-    this.counterValue.update((counterValue) => counterValue - 1);
-  }
+  store = inject(CounterStore);
 }
