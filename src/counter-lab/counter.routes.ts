@@ -1,8 +1,8 @@
 import { Routes } from '@angular/router';
 import { Counter } from './counter';
-import { Ui } from '../counter/pages/ui';
-import { Prefs } from '../counter/pages/prefs';
-import { CounterStore } from '../counter/stores/counterstore';
+import { Ui } from './pages/ui';
+import { Prefs } from './pages/prefs';
+import { CounterStore } from './stores/counter';
 export const COUNTER_ROUTES: Routes = [
   {
     path: '',

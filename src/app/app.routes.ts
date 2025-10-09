@@ -25,9 +25,19 @@ export const routes: Routes = [
       import('../links/link.routes').then((l) => l.LINKS_ROUTES),
   },
   {
+    path: 'links-rx',
+    loadChildren: () =>
+      import('../links-entities-rx/link.routes').then((l) => l.LINKS_ROUTES),
+  },
+  {
     path: 'counter-lab',
     loadChildren: () =>
-      import('../counter-lab/counter.routes').then((r) => r.COUNTER_ROUTES),
+      import('../counter-lab/counter.routes').then((l) => l.COUNTER_ROUTES),
+  },
+  {
+    path: 'counter-lab-es',
+    loadChildren: () =>
+      import('../counter-lab-es/counter.routes').then((l) => l.COUNTER_ROUTES),
   },
   {
     path: '**',

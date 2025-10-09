@@ -1,18 +1,20 @@
 import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
-import { CounterStore } from '../stores/counterstore';
+import { CounterStore } from '../stores/counter';
 
 @Component({
   selector: 'app-counter-prefs',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [],
+  providers: [],
   template: `
-    <div>
-      @for (counterPref of store.counterPrefs; track counterPref) {
+    <div class="join">
+      @for (by of store.countByValues; track by) {
         <button
-          class="btn btn-primary"
-          (click)="store.setCounterPref(counterPref)"
+          [disabled]="store.by() === by"
+          (click)="store.setBy(by)"
+          class="join-item btn"
         >
-          {{ counterPref }}
+          {{ by }}
         </button>
       }
     </div>

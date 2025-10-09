@@ -1,20 +1,19 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
-import { CounterStore } from '../counter/stores/counterstore';
 
 @Component({
   selector: 'app-counter',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterOutlet, RouterLink],
+  imports: [RouterLink, RouterOutlet],
   providers: [],
   template: `
-    <div>Counter Stuff Goes Here</div>
-    <div class="flex flex-row gap-4 p-8">
-      <a class="link" routerLink="ui">UI</a>
-      <a class="link" routerLink="prefs">Prefs</a>
+    <div class="flex flex-row gap-4">
+      <a routerLink="ui" class="link">UI</a>
+      <a routerLink="prefs" class="link">Prefs</a>
     </div>
-
-    <router-outlet />
+    <div>
+      <router-outlet />
+    </div>
   `,
   styles: ``,
 })

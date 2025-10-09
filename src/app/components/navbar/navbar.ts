@@ -45,12 +45,20 @@ export class Navbar {
       path: '/links',
     },
     {
-      label: 'Support',
-      path: '/support',
+      label: 'Useful Links RX',
+      path: '/links-rx',
     },
     {
-      label: 'Counter',
+      label: 'Counter Lab',
       path: '/counter-lab',
+    },
+    {
+      label: 'Counter Lab Events',
+      path: '/counter-lab-es',
+    },
+    {
+      label: 'Support',
+      path: '/support',
     },
   ]);
 }
